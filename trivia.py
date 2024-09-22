@@ -14,7 +14,7 @@ def verificar_edad(edad):
     un mensaje informando que no puede participar"""
     
     if edad >= 18:
-        print("¿Estas preparado/a para jugar? \n\n¡Comienza el desafío, qué te diviertas!\n")
+        print("¿Estás preparado/a para jugar? \n\n¡Comienza el desafío, qué te diviertas!\n")
         return True
     else:
         print("Lo siento, la edad mínima para participar es de 18 años. ¡Te espero pronto!")
@@ -32,7 +32,6 @@ def mezclar_preguntas(preguntas):
     return preguntas
 
 def obtener_preguntas():
-    
     """Se utilizan tuplas para organizar las preguntas y respuestas dentro de una lista """
     return [
         ("¿Los operadores en Python son sólo aritméticos?", "NO"),
@@ -48,22 +47,21 @@ def obtener_preguntas():
     ]
 
 def verificar_respuesta(pregunta, respuesta_correcta):
-    
     """ Se utiliza la función para verificar si la respuesta es correcta. Deberá buscar si la respuesta
     que responde el jugado es correcta o no y emitirá un mensaje informando el resultado. Si la respuesta
-    es incorrecta además mostrará cuál era la verdadera. Retornando a la llsta de preguntas para seguir
+    es incorrecta además mostrará cuál era la verdadera. Retornando a la lista de preguntas para seguir
     jugando."""
     
-    print(f"La pregunta es:" ,pregunta)
+    print(f"La pregunta es: {pregunta}")
     respuesta_participante = input("Tu respuesta es: ")
     if respuesta_participante.lower() == respuesta_correcta.lower():
         print("¡Muy bien! Sigue respondiendo.")
+        return True
     else:
         print(f"Incorrecta. La respuesta correcta es: {respuesta_correcta}")
-        
+        return False
 
 def juego_trivia():
-    
     """Función principal para jugar a la trivia: Solicitar el nombre y la edad, verificar si la edad es
     válida para participar, mostrar el mensaje de bienvenida, obtener y mezclar las preguntas e iniciar el juego.
     La partida se termina si el jugador comete tres errores consecutivos o si responde correctamente a 
@@ -72,20 +70,10 @@ def juego_trivia():
     nombre (str): Nombre
     edad (int): Edad 
     preguntas (list): Lista de preguntas y respuestas correctas.
-    contador_respuestas_correctas (int): Contador de respuestas correctas del participante
-    errores_consecutivos (int): Contador de errores consecutivos del participante.
-
-    Funciones a utilizar:
-    solicitar_nombre_y_edad(): Solicita el nombre y la edad
-    verificar_edad(edad): Verifica si es mayor de edad para participar
-    mostrar_bienvenida(nombre): Muestra un mensaje de bienvenida al jugador.
-    obtener_preguntas(): Se oObtiene la lista de preguntas.
-    mezclar_preguntas(preguntas): Mezcla las preguntas en orden aleatorio.
-    verificar_respuesta(pregunta, respuesta_correcta): Verifica si la respuesta del jugador es correcta.
-
-    Fin del juego: Se imprimen por consola los mensajes indicando el resultado final y un mensaje
-    de despedida"""
- 
+    contador_respuestas_correctas (int): Contador de respuestas correctas.
+    contador_errores (int): Contador de errores consecutivos.
+    """
+    
     nombre, edad = solicitar_nombre_y_edad()
     if verificar_edad(edad):
         mostrar_bienvenida(nombre)
@@ -107,13 +95,7 @@ def juego_trivia():
             print(f"¡Felicitaciones {nombre}! ¡GANASTE! Obtuviste {contador_respuestas_correctas} respuestas correctas.")
             print("¡Gracias por jugar! Te espero en un nuevo desafío.\n ¡HASTA LA PRÓXIMA!")
 
-juego_trivia () 
-    
-print("¡Gracias por jugar! Te espero en un nuevo desafío.")
-print("\n HASTA LA PRÓXIMA")
-
-juego_trivia ()
-
+juego_trivia ()    
 
 
 
